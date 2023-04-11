@@ -10,6 +10,8 @@ class Game extends (EventEmitter as new () => TypedEmitter<GameEvents>) {
   private _running: boolean;
 
   constructor(story: string) {
+    if (!story) throw new Error("No story provided");
+
     super();
     this._narrator = new Narrator(story);
     this._characters = [];

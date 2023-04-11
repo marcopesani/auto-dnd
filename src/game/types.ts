@@ -4,7 +4,7 @@ export type GameEvents = {
   storyUpdate: (type: StoryUpdateType, update: string, name?: string) => void;
 };
 
-export type StopyUpdate = {
+export type StoryUpdate = {
   type: StoryUpdateType;
   update: string;
   name?: string;

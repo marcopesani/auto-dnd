@@ -1,7 +1,7 @@
-import { StopyUpdate } from "@/game/types";
+import { StoryUpdate } from "@/game/types";
 import { useEffect, useRef } from "react";
 
-const ConsoleStream = ({ story }: { story: StopyUpdate[] }) => {
+const ConsoleStream = ({ story }: { story: StoryUpdate[] }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

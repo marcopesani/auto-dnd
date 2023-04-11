@@ -13,12 +13,13 @@ export async function fetchChatCompletions(
   messages: ChatCompletionRequestMessage[],
   model: string = "gpt-3.5-turbo"
 ): Promise<CreateChatCompletionResponse> {
+  // get apiKey from local storage
+  const apiKey = localStorage.getItem("apiKey");
   const url = "https://api.openai.com/v1/chat/completions";
   const headers = new Headers({
     "Content-Type": "application/json",
-    Authorization: `Bearer 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`,
+    Authorization: `Bearer ${apiKey}`,
   });
-
   const body = JSON.stringify({
     model,
     messages,
