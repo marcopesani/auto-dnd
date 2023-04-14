@@ -3,6 +3,7 @@ export type Character = {
   name: string;
   description: Description;
   personality: Personality;
+  stats: Stats;
 };
 
 export type Description = {
@@ -33,4 +34,13 @@ export type Personality = {
   values: string;
   traits: string[];
   goals: string;
+};
+
+export type Stats = {
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
 };

@@ -1,60 +1,30 @@
-import React, { useEffect, useState } from "react";
-import Sidebar from "@/components/Sidebar";
-import MainContent from "@/components/MainContent";
-import Game from "@/game";
-import Character from "@/game/Character";
-import { StoryUpdate } from "@/game/types";
+import React from "react";
+import Link from "next/link";
 
-export default function Home() {
-  const [initialStory, setInitialStory] =
-    useState<string>(`You are in the mines of Moria. You have a closed door if front of you.
-  From the other side of the door, creepy sounds come. Sound of danger.
-  But you have to cross it to continue in your quest.`);
-  const [game, setGame] = useState<Game | null>(null);
-  const [story, setStory] = useState<StoryUpdate[]>([]);
-  const [characters, setCharacters] = useState<Character[]>([]);
-
-  useEffect(() => {
-    const gameInstance = new Game(initialStory);
-    const charactersList = [];
-
-    gameInstance.on("storyUpdate", (type, update, name) => {
-      setStory((prevStory) => [
-        ...prevStory,
-        {
-          type,
-          update,
-          name,
-        },
-      ]);
-    });
-
-    charactersList.push(new Character("Neo", "the one"));
-    charactersList.push(new Character("Gimli", "dwarf"));
-    charactersList.push(new Character("Spiderman", "superhero"));
-    charactersList.push(new Character("Frodo", "hobbit"));
-    charactersList.forEach((character) => {
-      gameInstance.addCharacter(character);
-    });
-
-    setCharacters(charactersList);
-    setGame(gameInstance);
-
-    return () => {
-      if (gameInstance) {
-        gameInstance.stop();
-      }
-    };
-  }, []);
-
+const IndexPage: React.FC = () => {
   return (
-    <main className="h-screen w-full flex">
-      <Sidebar characters={characters} />
-      <MainContent
-        initialStory={initialStory}
-        game={game}
-        story={story}
-      />
-    </main>
+    <div
+      className="relative w-full h-screen bg-cover bg-center"
+      style={{ backgroundImage: "url('/assets/backgrounds/1.jpg')" }}
+    >
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="bg-white bg-opacity-60 rounded-lg p-8 space-y-4 backdrop-blur-md bg-opacity-40">
+          <h1 className="text-4xl font-bold text-center">Auto D&D</h1>
+          <Link href="/new/campaign">
+            <button className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+              New Game
+            </button>
+          </Link>
+          <button className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            Continue
+          </button>
+          <button className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            Options
+          </button>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default IndexPage;

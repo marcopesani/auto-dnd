@@ -42,6 +42,14 @@
       "values": "Freedom",
       "traits": ["Unpredictable", "Impulsive", "Loyal"],
       "goals": "To uncover the secrets of the elemental planes and unlock the full potential of her storm magic"
+    },
+    "stats": {
+      "intelligence": 18,
+      "wisdom": 19,
+      "charisma": 17,
+      "strength": 12,
+      "dexterity": 10,
+      "constitution": 12
     }
   },
   {
@@ -88,6 +96,14 @@
       "values": "Lively, outgoing",
       "traits": ["Charismatic", "Optimistic", "Loyal"],
       "goals": "To ensure the safety and happiness of her companions, and to satisfy her boundless curiosity and love of adventure."
+    },
+    "stats": {
+      "intelligence": 18,
+      "wisdom": 19,
+      "charisma": 17,
+      "strength": 12,
+      "dexterity": 10,
+      "constitution": 12
     }
   },
   {
@@ -134,6 +150,14 @@
       "values": "Respect for the natural world and its creatures",
       "traits": ["Quiet", "Loyal", "Intellectual"],
       "goals": "To maintain balance and harmony wherever she goes, and to protect her friends and allies from harm."
+    },
+    "stats": {
+      "intelligence": 18,
+      "wisdom": 19,
+      "charisma": 17,
+      "strength": 12,
+      "dexterity": 10,
+      "constitution": 12
     }
   },
   {
@@ -180,6 +204,14 @@
       "values": "Compassionate and empathetic",
       "traits": ["Steadfast", "Dutiful", "Humorous"],
       "goals": "To spread the light of goodness wherever he goes, and to protect the innocent and uphold justice."
+    },
+    "stats": {
+      "intelligence": 18,
+      "wisdom": 19,
+      "charisma": 17,
+      "strength": 12,
+      "dexterity": 10,
+      "constitution": 12
     }
   }
 ]

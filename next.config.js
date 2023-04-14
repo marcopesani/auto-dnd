@@ -1,24 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  future: {
-    webpack5: true,
-  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Enable WebAssembly support
-    config.experiments = {
-      asyncWebAssembly: true,
-      layers: true,
-    };
-
     // Add a rule for .wasm files
     config.module.rules.push({
       test: /\.wasm$/,
-      type: "webassembly/async",
+      loader: 'wasm-loader',
     });
+
+    // Add .wasm extension to Webpack's resolve.extensions array
+    config.resolve.extensions.push('.wasm');
 
     return config;
   },
 };
 
 module.exports = nextConfig;
+

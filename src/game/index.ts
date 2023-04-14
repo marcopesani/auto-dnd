@@ -3,22 +3,23 @@ import TypedEmitter from "typed-emitter";
 import Character from "@/game/Character";
 import Narrator from "@/game/Narrator";
 import { GameEvents } from "@/game/types";
+import { Campaign } from "@/pages/api/campaigns/types";
 
 class Game extends (EventEmitter as new () => TypedEmitter<GameEvents>) {
   private _narrator: Narrator;
   private _characters: Character[];
   private _running: boolean;
 
-  constructor(story: string) {
-    if (!story) throw new Error("No story provided");
+  constructor(campaign: Campaign) {
+    if (!campaign) throw new Error("No campaign provided");
 
     super();
-    this._narrator = new Narrator(story);
+    this._narrator = new Narrator(campaign.abstract);
     this._characters = [];
     this._running = false;
 
     this._narrator.on("outcome", (decision) => {
-      this.emit("storyUpdate", "narrator", decision);
+      this.emit("gameUpdate", "narrator", decision);
     });
   }
 
@@ -27,7 +28,7 @@ class Game extends (EventEmitter as new () => TypedEmitter<GameEvents>) {
     this._narrator.addCharacter(character);
 
     character.on("decision", (decision) => {
-      this.emit("storyUpdate", "character", decision, character.name);
+      this.emit("gameUpdate", "character", decision, character.name);
     });
   }
 
